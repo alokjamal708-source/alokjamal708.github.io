@@ -1,0 +1,154 @@
+/* --- BASE SETUP --- */
+body, html {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+    font-family: 'Poppins', sans-serif;
+    cursor: crosshair;
+}
+
+/* --- 1. PRELOADER (Hacker Style) --- */
+#preloader {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #090a0f;
+    z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    color: #ff9a9e;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+}
+.loader-content { text-align: center; }
+.progress-bar {
+    width: 250px; height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-top: 15px; border-radius: 10px; overflow: hidden;
+}
+.progress-fill {
+    width: 0%; height: 100%;
+    background: #ff9a9e; box-shadow: 0 0 10px #ff9a9e;
+    transition: width 0.2s;
+}
+
+/* --- 2. UI LAYER (Instruksi) --- */
+#ui-layer {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 100;
+    pointer-events: none;
+    transition: opacity 1s ease;
+    width: 90%;
+}
+h1 { 
+    font-family: 'Dancing Script', cursive; 
+    font-size: 3.5rem; 
+    margin: 0;
+    background: -webkit-linear-gradient(#fff, #ff9a9e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.heartbeat { animation: heartbeat 1.5s infinite; }
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* --- 3. TERMINAL (Glassmorphism) --- */
+#terminal-container {
+    position: absolute;
+    bottom: 30px; left: 30px;
+    width: 350px; max-width: 85%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    z-index: 200;
+    color: #fff;
+    font-size: 0.9rem;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    pointer-events: none;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.terminal-header {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 12px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
+.terminal-title { 
+    color: #ff9a9e; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+}
+#typewriter { line-height: 1.6; font-weight: 300; }
+
+/* Kursor Hati Berkedip */
+#typewriter::after {
+    content: "❤️";
+    margin-left: 5px;
+    font-size: 0.8rem;
+    animation: blink 0.8s infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
+
+/* --- 4. ANIMASI INTERAKTIF --- */
+.floating-text {
+    position: absolute; color: white;
+    font-size: 1.2rem; font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+    pointer-events: none; z-index: 150;
+    font-family: 'Dancing Script', cursive;
+}
+.ripple-heart {
+    position: absolute; width: 20px; height: 20px;
+    background: #ff9a9e;
+    clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+    pointer-events: none; z-index: 999;
+    transform: translate(-50%, -50%);
+    animation: ripple 1s ease-out forwards;
+}
+@keyframes ripple {
+    to { width: 150px; height: 150px; opacity: 0; transform: translate(-50%, -50%) scale(2); }
+}
+
+/* --- 5. FINAL CARD & GLOW --- */
+#final-card {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 280px; padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    color: white; text-align: center;
+    z-index: 500; opacity: 0;
+    pointer-events: none; transition: all 1s ease;
+}
+#final-card.show { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
+.final-btn {
+    margin-top: 20px; padding: 10px 25px;
+    border: none; border-radius: 20px;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+    color: white; cursor: pointer; font-weight: bold;
+    transition: transform 0.2s;
+}
+.final-btn:hover { transform: scale(1.1); }
+
+#cursor-glow {
+    position: fixed; width: 150px; height: 150px;
+    background: radial-gradient(circle, rgba(255,154,158,0.15) 0%, rgba(255,154,158,0) 70%);
+    border-radius: 50%; pointer-events: none;
+    z-index: 999; transform: translate(-50%, -50%);
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    h1 { font-size: 2.2rem; }
+    #terminal-container { width: 250px; font-size: 0.75rem; bottom: 20px; left: 20px; }
+}

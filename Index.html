@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Universe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="terminal-text" id="loader-msg">Initializing Secure Connection...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ui-layer">
+        <h1 class="heartbeat">Klik Layarnya, Sayang...</h1>
+        <p>Setiap klik adalah memori kita yang abadi</p>
+    </div>
+
+    <div id="canvas-container"></div>
+    
+    <audio id="musik" loop>
+        <source src="Lany.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="terminal-container">
+        <div class="terminal-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">system_message.sh</span>
+        </div>
+        <div id="typewriter"></div>
+    </div>
+
+    <div id="floating-messages-container"></div>
+
+    <div id="final-card">
+        <h2 style="font-family: 'Dancing Script', cursive; font-size: 2rem;">HBD Atikah ❤️</h2>
+        <p style="font-size: 0.9rem; line-height: 1.6;">
+            "Semoga hari-harimu selalu dipenuhi oleh kebaikan dan keindahan, semoga semesta selalu berpihak kepadamu, dan setiap langkahmu dimudahkan mejunu masa depan
+            yang cerah.teruslah berkembang,teruslah melangkah, dan temukan kebahagiaan kebahagiaan mu yang lainnya juga,
+            untuk segala yang dibalas dan yang tak terbalas, semoga yang baik kembali baik kepadamu, dan yang buruk tersimpan diruang hatimu yang paling ikhlas."
+        </p>
+        <button class="final-btn" onclick="location.reload()">Lihat Lagi?</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
